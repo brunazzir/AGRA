@@ -1,0 +1,16 @@
+#logo {
+    background-color : lightblue;
+
+    border-style: dashed;
+    border-color: black;
+}
+
+#banner {
+    border-style: dashed;
+    border-color: red;
+}
+
+#timeline {
+    border-style: dashed;
+    border-color: brown;
+}
