@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-12">
                     <div id="timeline">
-                        <form id="imgupload" action="#" method="post" enc-type="multipart/form-data">
+                        <form id="upload_form" action="./uploadcontroller.php" method="post" enctype="multipart/form-data">
                             <div class="row">   
                                 <div class="col-8">
                                     <textarea id="timeline" class="form-control" rows="6" placeholder="Partagez vos pensées"></textarea>
@@ -34,7 +34,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-4">
-                                    <input type="file" class="form-control btn btn-primary" accept="image/*" multiple/>
+                                    <input type="file" name="upload_images[]" class="form-control btn btn-primary" accept="image/*" multiple/>
                                 </div>
                                 <div class="col-2">
                                     <input type="submit" class="form-control" />
