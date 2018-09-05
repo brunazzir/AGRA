@@ -3,8 +3,8 @@
 <?php
 //TODO [0] == i
 var_dump($_FILES);
-$directory = 'uploaded_images/';
-$file = $_FILES['upload_images'];
+$directory = '/uploaded_images';
+$file = $_FILES['upload_images'][0];
 $max_size = 3145728;
 $size = filesize($_FILES['upload_images']['tmp_name'][0]);
 $file_types = array('.gif','.png','.jpg','.jpeg', '.ico');
