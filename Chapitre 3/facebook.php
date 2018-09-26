@@ -1,5 +1,5 @@
 <?php
-
+    include('getPosts.inc.php');
 ?>
 <html>
     <head>
@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-12">
                     <div id="timeline">
-                        <form id="upload_form" action="./uploadcontroller.php" method="post" enctype="multipart/form-data">
+                        <form id="upload_form" action="./uploadcontroller.php" method="post" enctype="multipart/form-data" >
                             <div class="row">   
                                 <div class="col-8">
                                     <textarea id="timeline" name="publication_text" class="form-control" rows="6" placeholder="Partagez vos pensées"></textarea>
@@ -41,9 +41,10 @@
                                 </div>
                             </div>
                         </form>
-                        Timeline B O I S
-                        <img src="salut.ico" height="72px"/>
-                        <img src="salut.ico" class="img-fluid"/>
+                        <?php
+                            $posts = showPosts(); 
+                            echo $posts; 
+                        ?>
                     </div>
                 </div>
             </div>
