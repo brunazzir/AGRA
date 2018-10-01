@@ -10,7 +10,12 @@
     border-color: red;
 }
 
-#timeline {
+#publication {
     border-style: dashed;
     border-color: brown;
+}
+
+.row-post {
+    border-style: dashed; 
+    border-color:  blue;
 }

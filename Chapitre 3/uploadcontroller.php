@@ -1,23 +1,21 @@
 <?php
 
 include("transactions_db.php");
+include("resize-class.inc.php");
 
 if(isset($_POST))
 {
     if(!empty($_POST['publication_text']) && isset($_FILES['upload_images']))
     {
-        
-        $uploaded_text = $_POST['publication_text']; // ditto ^
+        $uploaded_text = $_POST['publication_text'];
         $savedImages = manageImages($_FILES['upload_images']);
-        var_dump($savedImages);
-
         if(addPostAndImages($uploaded_text, $savedImages) != false)
         {
             header("Location: facebook.php");
         }
         else
         {
-            $folderRoot = "../uploaded_images/";
+            $folderRoot = "./uploaded_images/";
 
             for($i=0;$i<count($savedImages);$i++)
             {
@@ -31,7 +29,6 @@ if(isset($_POST))
             }
             header('Location: facebook.php');
         }
-        
     }
     else{
         echo 'error';
@@ -51,6 +48,8 @@ function manageImages($images)
         $size = filesize($images['tmp_name'][$i]);
         $file_type = mime_content_type($images['tmp_name'][$i]);
 
+        
+
         if(!in_array($file_type,$file_types)) //file type control
         {
             $error = 'You must upload an image. (.gif, .png, .jpg, .jpeg, .ico)';
@@ -62,12 +61,12 @@ function manageImages($images)
         if(!isset($error)) //Upload allowed if there is no error
         {
             $target_name = date('Y-m-d-') . uniqid() . '-' . $file_name;
-            if(move_uploaded_file($images['tmp_name'][$i], $directory . date('Y-m-d-') . uniqid() . '-' . $file_name))
+            if(move_uploaded_file($images['tmp_name'][$i], $directory . $target_name))
             {
+                $resizeImg = new resize($directory . $target_name);
+                $resizeImg->resizeImage(1024,768, 'exact'); //1024x768
+                $resizeImg->saveImage($directory . $target_name,100);
                 $savedImages[]  = $target_name;
-                //UploadImageAndPost($uploaded_files,$uploaded_text);
-                
-               // echo 'Upload successful.';
             }
             else 
             {

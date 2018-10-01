@@ -53,7 +53,7 @@ function getImage($idImage)
         $request = $connexion -> prepare('SELECT tbl_posts.id,text,TOC,TOM, tbl_images.id, name FROM tbl_posts NATURAL JOIN images ORDER BY id DESC');
         if ($request -> execute())
         {
-            return $request -> fetchAll();
+            return $request -> fetchAll(PDO::FETCH_ASSOC);
         }
         else 
         {
@@ -68,7 +68,7 @@ function getImage($idImage)
         $request = $connexion -> prepare('SELECT id,text,TOC,TOM FROM tbl_posts ORDER BY id DESC');
         if ($request -> execute())
         {
-            return $request -> fetchAll();
+            return $request -> fetchAll(PDO::FETCH_ASSOC);
         }
         else 
         {
@@ -110,10 +110,10 @@ function getImage($idImage)
     function getImagesByPostId($postId)
     {
         $connexion = getConnexion();
-        $request = $connexion -> prepare('SELECT * FROM tbl_images WHERE id = :postId');
+        $request = $connexion -> prepare('SELECT * FROM tbl_images WHERE postId = :postId');
         if ($request -> execute(array("postId" => $postId)))
         {
-            return $request -> fetchAll();
+            return $request -> fetchAll(PDO::FETCH_ASSOC);
         }
         else 
         {

@@ -1,7 +1,7 @@
 <?php
 include("bd_interactions.inc.php");
 
-
+//Ajoute un post et son image dans la base de données
 function addPostAndImages($text,$images)
 {
     $connexion = getConnexion();
@@ -22,5 +22,21 @@ function addPostAndImages($text,$images)
         return false;
     }
 }
+
+function DeletePostAndImages($postId) 
+{
+    $connexion = getConnexion();
+    try
+    {
+        $connexion->beginTransaction();
+        $id = getPostById($postId);
+    }
+    catch(Exception $e)
+    {
+        $connexion->rollback();
+        return false;
+    }
+}
+
 
 ?>

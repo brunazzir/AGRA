@@ -29,7 +29,7 @@
                         <form id="upload_form" action="./uploadcontroller.php" method="post" enctype="multipart/form-data" >
                             <div class="row">   
                                 <div class="col-8">
-                                    <textarea id="timeline" name="publication_text" class="form-control" rows="6" placeholder="Partagez vos pensées"></textarea>
+                                    <textarea id="publication" name="publication_text" class="form-control" rows="6" placeholder="Partagez vos pensées"></textarea>
                                 </div>
                             </div>
                             <div class="row">
@@ -41,13 +41,13 @@
                                 </div>
                             </div>
                         </form>
-                        <?php
-                            $posts = showPosts(); 
-                            echo $posts; 
-                        ?>
                     </div>
                 </div>
             </div>
+            <?php
+                $posts = showPosts(); 
+                echo $posts; 
+            ?>
         </div>
     </body>
 </html>
