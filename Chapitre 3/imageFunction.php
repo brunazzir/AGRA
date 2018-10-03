@@ -1,41 +1,8 @@
 <?php
 
-include("db_transactions.php");
-include("imageFunction.php");
+include("resize-class.inc.php");
 
-if(isset($_POST))
-{
-    if(!empty($_POST['publication_text']) && isset($_FILES['upload_images']))
-    {
-        $uploaded_text = $_POST['publication_text'];
-        $savedImages = manageImages($_FILES['upload_images']);
-        if(addPostAndImages($uploaded_text, $savedImages) != false)
-        {
-            header("Location: facebook.php");
-        }
-        else
-        {
-            $directory = "./uploaded_images/";
-
-            for($i=0;$i<count($savedImages);$i++)
-            {
-                if(file_exists($directory.$savedImages[$i]))
-                {
-                    if(unlink($directory.$savedImages[$i]))
-                    {
-                        header('Location: facebook.php');
-                    }
-                }
-            }
-            header('Location: facebook.php');
-        }
-    }
-    else{
-        echo 'error';
-    }
-}
-
-/*function manageImages($images)
+function manageImages($images)
 {
     
     $file_types = array('image/x-icon', 'image/gif','image/png','image/jpg','image/jpeg');
@@ -80,7 +47,5 @@ if(isset($_POST))
     }
 
     return $savedImages;
-}*/
-
-
+}
 ?>
