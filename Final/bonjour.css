@@ -1,0 +1,21 @@
+#logo {
+    background-color : lightblue;
+
+    border-style: dashed;
+    border-color: black;
+}
+
+#banner {
+    border-style: dashed;
+    border-color: red;
+}
+
+#publication {
+    border-style: dashed;
+    border-color: brown;
+}
+
+.row-post {
+    border-style: dashed; 
+    border-color:  blue;
+}

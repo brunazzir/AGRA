@@ -1,6 +1,5 @@
 <?php
     include('getPosts.inc.php');
-    $postId = $_GET['id'];
 ?>
 <html>
     <head>
@@ -27,11 +26,12 @@
             <div class="row">
                 <div class="col-12">
                     <div id="timeline">
-                        <form id="upload_form" action="./editcontroller.php?id=<?php echo($postId);?>"  method="post" enctype="multipart/form-data" >
-                            <?php
-                                $postToEdit = showPostEdit($postId);
-                                echo $postToEdit;
-                            ?>
+                        <form id="upload_form" action="./uploadcontroller.php" method="post" enctype="multipart/form-data" >
+                            <div class="row">   
+                                <div class="col-8">
+                                    <textarea id="publication" name="publication_text" class="form-control" rows="6" placeholder="Partagez vos pensées"></textarea>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-4">
                                     <input type="file" name="upload_images[]" class="form-control btn btn-primary" accept="image/*" multiple/>
@@ -44,6 +44,10 @@
                     </div>
                 </div>
             </div>
+            <?php
+                $posts = showPosts(); 
+                echo $posts; 
+            ?>
         </div>
     </body>
 </html>
